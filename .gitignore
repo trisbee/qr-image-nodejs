@@ -1,0 +1,11 @@
+.env
+
+# generated
+node_modules
+
+# IDE stuff
+.idea
+.cache
+.vscode
+
+dist/
