@@ -1,6 +1,6 @@
 {
   "name": "@trisbee/qr-image-nodejs",
-  "version": "1.0.5",
+  "version": "1.1.1",
   "types": "dist/index.d.ts",
   "description": "Allows you to generate image in middle of QR code",
   "main": "dist/index.js",
