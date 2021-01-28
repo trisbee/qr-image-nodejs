@@ -4,14 +4,13 @@ import {QRCodeToBufferOptions} from "qrcode";
 
 const {createCanvas, loadImage} = require('canvas')
 
-
-
-
-
-export const generateQRWithImage = async (qrCodeContent: string, width: number, margin: number, imageBuffer?: Buffer | null, options?: QRCodeToBufferOptions) : Promise<{
+interface QRResponse {
     buffer: Buffer,
-    qrImageCoverage: number
-}> => {
+    coverage: number
+}
+
+
+export const generateQRWithImage = async (qrCodeContent: string, width: number, margin: number, imageBuffer?: Buffer | null, options?: QRCodeToBufferOptions): Promise<QRResponse> => {
 
     const fullHeight = width + margin;
 
@@ -45,14 +44,13 @@ export const generateQRWithImage = async (qrCodeContent: string, width: number, 
     }
 
 
-
     const qrVolume = width * width;
     const result = (imageVolume / qrVolume) * 100;
 
 
     return {
         buffer: canvas.toBuffer(),
-        qrImageCoverage: result,
+        coverage: result,
     }
 
 
