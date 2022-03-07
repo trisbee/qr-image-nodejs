@@ -9,7 +9,8 @@
     "url": "git+https://github.com/trisbee/qr-image-nodejs.git"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "node ./test/qr-code-without-img.js"
   },
   "dependencies": {
     "canvas": "^2.7.0",
