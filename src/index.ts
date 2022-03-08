@@ -14,7 +14,7 @@ interface QRResponse {
  * @param width in px
  * @param margin in px
  * @param imageBuffer image that you want to place inside the QR code
- * @param options QR code options for dependency "qrcode"
+ * @param options QR code options for dependency "qrcode" - https://www.npmjs.com/package/qrcode#qr-code-options
  */
 export async function generateQRWithImage(
     qrCodeContent: string,
