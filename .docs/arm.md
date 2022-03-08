@@ -2,9 +2,9 @@
 
 This example is for Macbook Pro M1.
 
-## Steps
+Run installation of these tools in your terminal.
+You have to use brew.
 
-0. Install tooling: `arch -arm64 brew install pkg-config cairo pango jpeg giflib librsvg`
-1. [Install tooling for Rosseta](https://support.apple.com/en-gb/HT211861)
-2. [Open iTerm / Terminal with Rosseta](https://apple.stackexchange.com/a/428769)
-3. Run package and projects depending on that from this terminal
+```
+arch -arm64 brew install pkg-config cairo pango jpeg giflib librsvg
+```
