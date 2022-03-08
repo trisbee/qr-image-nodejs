@@ -1,6 +1,7 @@
 const { generateQRWithImage } = require('../dist/index');
+const { printToTerminal } = require("./tools");
 
-async function TestQRCodeWithoutImage(request, response)
+async function TestQRCodeWithoutImage()
 {
   console.debug(`⏳ QR code start ...`);
 
@@ -13,10 +14,7 @@ async function TestQRCodeWithoutImage(request, response)
 
   console.info(`👍 QR code generated ...`);
 
-  response
-    .status(200)
-    .set('Content-Type', 'image/png')
-    .end(data.buffer);
+  printToTerminal(data.buffer);
 }
 
-module.exports = TestQRCodeWithoutImage;
+TestQRCodeWithoutImage();
