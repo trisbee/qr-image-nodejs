@@ -1,6 +1,6 @@
 {
   "name": "@trisbee/qr-image-nodejs",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "types": "dist/index.d.ts",
   "description": "Allows you to generate image in middle of QR code",
   "main": "dist/index.js",
@@ -9,11 +9,12 @@
     "url": "git+https://github.com/trisbee/qr-image-nodejs.git"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc --removeComments",
+    "test": "node ./test/qr-code-without-img.js"
   },
   "dependencies": {
-    "canvas": "^2.7.0",
-    "qrcode": "^1.4.4"
+    "canvas": "^2.9.0",
+    "qrcode": "^1.5.0"
   },
   "devDependencies": {
     "@types/node": "^14.0.27",

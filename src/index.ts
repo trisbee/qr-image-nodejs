@@ -1,6 +1,6 @@
 import QRCOde = require('qrcode');
-import {QRCodeToBufferOptions} from "qrcode";
-import {createCanvas, loadImage} from "canvas";
+import { QRCodeToBufferOptions } from "qrcode";
+import { createCanvas, loadImage } from "canvas";
 
 interface QRResponse {
     buffer: Buffer,
