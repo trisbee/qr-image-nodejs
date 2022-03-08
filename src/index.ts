@@ -41,7 +41,7 @@ export async function generateQRWithImage(
     /** put prepared QR code to the canvas */
     ctx.drawImage(await loadImage(qrBuffer), margin / 2, margin / 2);
 
-    // volume of image in pixels
+    /** volume of image in pixels */
     let imageVolume = 0;
 
     /** if we want to put image inside the QR code we will draw it above it, to middle of the square */
@@ -49,17 +49,17 @@ export async function generateQRWithImage(
         let image = await loadImage(imageBuffer);
         imageVolume = image.width * image.height;
 
-        // calculates the center point of the image in QR
+        /** calculates the center point of the image in QR */
         let dx = (width / 2 - image.width / 2) + margin / 2;
 
         /** draw our image above the QR code */
         ctx.drawImage(image, dx, dx);
     }
 
-    // calculates the final volume of image in pixels (x * y)
+    /** calculates the final volume of image in pixels (x * y) */
     const qrVolume = width * width;
 
-    // calculates how much volume of the qr code is covered by the image in %
+    /** calculates how much volume of the qr code is covered by the image in % */
     const result = (imageVolume / qrVolume) * 100;
 
     return {
