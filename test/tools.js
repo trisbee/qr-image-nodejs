@@ -9,7 +9,7 @@ async function imageToFile(body) {
 
   const suffix = Math.floor(new Date().getTime() / 1000);
   const fileName = `image-${suffix}.png`;
-  const folder = '/tmp/';
+  const folder = '/../tmp/';
 
   let fileAbsolutePath = path.join(__dirname, folder, fileName);
 
