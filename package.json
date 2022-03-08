@@ -13,7 +13,7 @@
     "test": "node ./test/qr-code-without-img.js"
   },
   "dependencies": {
-    "canvas": "^2.7.0",
+    "canvas": "^2.9.0",
     "qrcode": "^1.4.4"
   },
   "devDependencies": {
