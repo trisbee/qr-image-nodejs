@@ -7,6 +7,15 @@ interface QRResponse {
     coverage: number
 }
 
+/**
+ * Print QR code with image inside (logo of the company)
+ *
+ * @param qrCodeContent string, for example URL address
+ * @param width in px
+ * @param margin in px
+ * @param imageBuffer image that you want to place inside the QR code
+ * @param options QR code options for dependency "qrcode"
+ */
 export async function generateQRWithImage(
     qrCodeContent: string,
     width: number,
