@@ -10,6 +10,7 @@ resulting image.
 
 - [Examples](.docs/examples.md)
 - [Typings](.docs/typings.md)
+- [Known issues](CAVEATS.md)
 
 ## How to start
 
