@@ -20,7 +20,7 @@ export async function generateQRWithImage(
     qrCodeContent: string,
     width: number,
     margin: number,
-    imageBuffer?: Buffer | string | null,
+    imageBuffer?: Buffer | string | null | undefined,
     options?: QRCodeToBufferOptions
 ): Promise<QRResponse> {
 
