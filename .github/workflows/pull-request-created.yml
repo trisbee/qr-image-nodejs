@@ -6,13 +6,16 @@ jobs:
   pull-request-created:
     name: 'Pull request created'
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        id-token: write
+        pull-requests: write
     env:
         BUILD_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - name: 'Send working message to PR as comment'
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           recreate: true
           message: |
             ⏳ Starting build, please wait ...
@@ -21,8 +24,11 @@ jobs:
 
             _You can watch progress on [build URL](${{ env.BUILD_URL }})_
 
-      - name: 'Checkout'
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+            node-version: 16
+
       - uses: mansona/npm-lockfile-version@v1
 
       - name: 'Install dependencies'
@@ -36,9 +42,8 @@ jobs:
 
       - name: 'The job has failed'
         if: ${{ failure() }}
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           recreate: true
           message: |
             🔥 **Build failed**
@@ -55,9 +60,8 @@ jobs:
           path: ~/.npm/_logs
 
       - name: 'Send URL address to PR as comment'
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           recreate: true
           message: |
             👍 **All good!**
