@@ -22,7 +22,7 @@ jobs:
             _You can watch progress on [build URL](${{ env.BUILD_URL }})_
 
       - name: 'Checkout'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: mansona/npm-lockfile-version@v1
 
       - name: 'Install dependencies'
