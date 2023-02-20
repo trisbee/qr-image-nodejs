@@ -6,13 +6,16 @@ jobs:
   pull-request-created:
     name: 'Pull request created'
     runs-on: ubuntu-latest
+    permissions:
+        contents: write
+        id-token: write
+        pull-requests: write
     env:
         BUILD_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - name: 'Send working message to PR as comment'
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           recreate: true
           message: |
             ⏳ Starting build, please wait ...
@@ -36,9 +39,8 @@ jobs:
 
       - name: 'The job has failed'
         if: ${{ failure() }}
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           recreate: true
           message: |
             🔥 **Build failed**
@@ -55,9 +57,8 @@ jobs:
           path: ~/.npm/_logs
 
       - name: 'Send URL address to PR as comment'
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           recreate: true
           message: |
             👍 **All good!**
