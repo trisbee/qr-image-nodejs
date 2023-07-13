@@ -1,11 +1,10 @@
 const { generateQRWithImage } = require('../dist/index');
 const { printToTerminal } = require("./tools");
 
-async function TestQRCodeWithoutImage()
-{
+async function testQRCodeWithoutImage() {
   console.debug(`⏳ QR code start ...`);
 
-  const data = await generateQRWithImage(
+  const test1 = await generateQRWithImage(
     "https://www.trisbee.com/en/careers",
     256,
     256,
@@ -14,7 +13,7 @@ async function TestQRCodeWithoutImage()
 
   console.info(`👍 QR code generated ...`);
 
-  printToTerminal(data.buffer);
+  printToTerminal(test1.buffer);
 }
 
-TestQRCodeWithoutImage();
+testQRCodeWithoutImage().then(r => console.info("all done"));

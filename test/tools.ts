@@ -1,18 +1,15 @@
 const fs = require('fs');
 const path = require('path');
-const resolve = require('path').resolve
 
 /**
  * convert buffer data to file on disk
  */
-async function imageToFile(body) {
-
+async function imageToFile(body): Promise<void> {
   const suffix = Math.floor(new Date().getTime() / 1000);
   const fileName = `image-${suffix}.png`;
   const folder = '/../tmp/';
 
   let fileAbsolutePath = path.join(__dirname, folder, fileName);
-
   ensureDirectoryExistence(fileAbsolutePath);
 
   fs.writeFile(fileAbsolutePath, body, function(err) {
@@ -22,17 +19,14 @@ async function imageToFile(body) {
 }
 
 /**
- * check if directory path exist
- * if not, create it
+ * check if directory path exist, if not, create it
  */
-function ensureDirectoryExistence(filePath)
-{
+function ensureDirectoryExistence(filePath): boolean | void {
   const dirname = path.dirname(filePath);
   if (fs.existsSync(dirname)) {
     return true;
   }
   ensureDirectoryExistence(dirname);
-
   fs.mkdirSync(dirname);
 }
 
@@ -40,7 +34,7 @@ function ensureDirectoryExistence(filePath)
 /**
  * get buffer and print QR code to terminal
  */
-async function printToTerminal(buffer) {
+async function printToTerminal(buffer): Promise<void> {
   await imageToFile(buffer);
 }
 
